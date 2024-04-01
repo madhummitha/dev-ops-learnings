@@ -17,7 +17,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{github.actor}}
-          password: ${{secrets.DO_TOKEN}}
+          password: ${{secrets.GITHUB_TOKEN}}
 
       - name: Build Image
         run: |
