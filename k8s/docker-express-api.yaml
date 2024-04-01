@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: express-api
+  template:
+    metadata:
+      labels:
+        app: express-api
+    spec:
+      containers:
+        - name: express-api-container
+          image: ghcr.io/madhummitha/docker-express-api:latest
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: express-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: express-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
