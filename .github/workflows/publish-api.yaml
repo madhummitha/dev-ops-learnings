@@ -22,4 +22,5 @@ jobs:
       - name: Build Image
         run: |
           docker build ./express-api -t ghcr.io/madhummitha/docker-express-api:latest -t ghcr.io/madhummitha/docker-express-api:${{github.sha}}
-          docker push ghcr.io/madhummitha/docker-express-api:latest ghcr.io/madhummitha/docker-express-api:${{github.sha}}
+          docker push ghcr.io/madhummitha/docker-express-api:latest 
+          docker push ghcr.io/madhummitha/docker-express-api:${{github.sha}}
